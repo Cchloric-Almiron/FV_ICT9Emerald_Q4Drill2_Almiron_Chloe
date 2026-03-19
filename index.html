@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Heat Index Checker</h1>
+
     <form>
 
     <label form="val1">Degree in Celsius</label>
@@ -18,6 +19,49 @@
 
     </form>
     
+    <button class="btn btn-sucess" onclick="calc()" type="submit">Check</button> 
+    <button type="button" onclick="window.location.reload()" class="btn btn-info">Refresh</button>
+
+    <script>
+
+        function calc(){
+
+        let temperature, humidity, H, message      
+        
+        temperature = parseFloat(document.getElementById("temperature").value);
+        humidity = parseFloat(document.getElementById("humidity").value);
+
+        H = temperature + (0.33 * humidity) - 4;
+ 
+         switch(true){
+            case(H <= 27):
+            message = "Comfortable/cool";
+            break; 
+
+            case(H >= 28 && H <= 32):
+            message = "Warm";
+            break; 
+
+            case(H >= 33 && H <= 37):
+            message = "Hot";
+            break; 
+
+            case(H >= 38 && H <= 41):
+            message = "Very Hot/Caution";
+            break;
+
+            case(H >= 42):
+            message = "Extreme Heat/Danger";
+            break;
+
+            default: 
+            message: "Undetermined"; 
+            }
+
+            alert("Heat Index:" + Hto.fixed(1) + "C°\n" + "Status:" + message);//concatenation
+        }
+        
+    </script>
 
 </body>
 </html>
